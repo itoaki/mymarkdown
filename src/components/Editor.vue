@@ -13,13 +13,13 @@
         <button class="saveMemosBtn" @click="saveMemos">メモの保存</button>
       </div>
       <textarea class="markdown" v-model="memos[selectedIndex].markdown"></textarea>
-      <div class="preview" v-html="preview()"></div>
+      <div class="preview markdown-body" v-html="preview()"></div>
     </div>
   </div>
 </template>
 
 <script>
-import marked from "marked";
+import marked from 'marked';
 export default {
   name: 'editor',
   props: ["user"],
@@ -44,7 +44,7 @@ export default {
   },
   mounted: function() {
     document.onkeydown = e => {
-      if(e.key == 's' && e.metaKey){
+      if(e.key == 's' && (e.metaKey || e.ctrlKey)) {
         this.saveMemos();
         return false;
       }
