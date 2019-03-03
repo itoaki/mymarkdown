@@ -1,3 +1,5 @@
+import 'shitajicss/docs/css/shitaji.min.css'
+import './scss/style.css'
 import Vue from 'vue'
 import App from './App.vue'
 
