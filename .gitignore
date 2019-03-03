@@ -4,7 +4,6 @@ dist/*
 # index.htmlは無視しない
 !index.html
 .firebase/*
-bat/
 npm-debug.log
 yarn-error.log
 
