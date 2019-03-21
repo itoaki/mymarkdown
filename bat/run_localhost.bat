@@ -1,2 +1,2 @@
 cd C:\gitRepos\mymarkdown
-npm run dev
+npm run serve

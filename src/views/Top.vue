@@ -7,36 +7,36 @@
 </template>
 
 <script>
-import Home from "../components/Home.vue";
-import Editor from "../components/Editor.vue";
+import Home from '../components/Home.vue';
+import Editor from '../components/Editor.vue';
 
 export default {
   name: 'top',
-  data () {
+  data() {
     return {
       isLogin: false,
-      userData: null
+      userData: null,
     };
   },
-  created: function() {
-    firebase.auth().onAuthStateChanged(user => {
+  created() {
+    firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.isLogin = true;
         this.userData = user;
       } else {
         this.isLogin = false;
         this.userData = null;
-      };
+      }
     });
   },
   components: {
-    Home: Home,
-    Editor: Editor
-  }
-}
+    Home,
+    Editor,
+  },
+};
 </script>
 <style lang="scss">
   #top {
     font-family: "Avenir", Arial, Helvetica, sans-serif
-  }
+  };
 </style>

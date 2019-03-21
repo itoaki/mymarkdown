@@ -8,15 +8,15 @@
 <script>
 export default {
   name: 'home',
-  data () {
+  data() {
     return {
-      msg: 'Welcome to MyMarkdown'
+      msg: 'Welcome to MyMarkdown',
     };
   },
   methods: {
-    googleLogin: function() {
+    googleLogin() {
       firebase.auth().signInWithRedirect(new firebase.auth.GoogleAuthProvider());
-    }
-  }
-}
+    },
+  },
+};
 </script>
