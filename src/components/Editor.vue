@@ -2,9 +2,11 @@
   <div class="editor">
     <h1>エディター画面</h1>
     <span>{{ user.displayName }}</span>
+
     <button @click="logout">ログアウト</button>
     <div class="editorWrapper">
       <div calss="memoListWrapper">
+
         <div class="memoList" v-for="(memo, index) in memos" @click="selectMemo(index)" :key="index" :data-selected="index == selectedIndex">
           <p class="memoTitle">{{displayTitle(memo.markdown)}}</p>
         </div>
@@ -22,68 +24,70 @@
 import marked from 'marked';
 export default {
   name: 'editor',
-  props: ["user"],
-  data () {
+  props: ['user'],
+  data() {
     return {
       memos: [{
-        markdown: "無題のメモ"
+        markdown: '無題のメモ',
       }],
-      selectedIndex: 0
+      selectedIndex: 0,
     };
   },
-  created: function() {
+  created() {
     firebase
       .database()
       .ref('memos/' + this.user.uid)
       .once('value')
-      .then(result => {
-        if(result.val()){
-          this.memos =result.val();
+      .then((result) => {
+        if (result.val()) {
+          this.memos = result.val();
         }
       });
   },
-  mounted: function() {
-    document.onkeydown = e => {
-      if(e.key == 's' && (e.metaKey || e.ctrlKey)) {
+
+  mounted() {
+    document.onkeydown = (e) => {
+      if (e.key === 's' && (e.metaKey || e.ctrlKey)) {
         this.saveMemos();
         return false;
       }
-    }
+    };
   },
-  beforeDestoroy: function() {
+  beforeDestoroy() {
     document.onkeydown = null;
   },
+
   methods: {
-    logout: function() {
+    logout() {
       firebase.auth().signOut();
     },
-    addMemo: function() {
+    addMemo() {
       this.memos.push({
-        markdown:"無題のメモ"
+        markdown : '無題のメモ',
       });
     },
-    deleteMemo: function() {
+    deleteMemo() {
       this.memos.splice(this.selectedIndex, 1);
       if (this.selectedIndex > 0) {
         this.selectedIndex--;
       }
     },
-    saveMemos: function() {
+    saveMemos() {
       firebase
         .database()
         .ref('memos/' + this.user.uid)
         .set(this.memos);
     },
-    selectMemo: function(index) {
-      this.selectedIndex= index;
+    selectMemo(index) {
+      this.selectedIndex = index;
     },
-    preview: function() {
+    preview() {
       return marked(this.memos[this.selectedIndex].markdown);
     },
-    displayTitle: function(text) {
+    displayTitle(text) {
       return text.split(/\n/)[0];
-    }
-  }
+    },
+  },
 };
 </script>
 
