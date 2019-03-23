@@ -40,7 +40,7 @@ jobs:
           command: npm install
       - run:
           name: deploy
-          command: ./node_modules/.bin/firebase deploy --only hosting --project "$FIREBASE_PROJECT_ID" --token "$FIREBASE_TOKEN"
+          command: firebase deploy --only hosting --project "$FIREBASE_PROJECT_ID" --token "$FIREBASE_TOKEN"
 
 workflows:
   version: 2
