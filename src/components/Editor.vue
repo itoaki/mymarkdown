@@ -59,6 +59,8 @@
 
 <script>
 import marked from 'marked';
+import firebase from 'firebase';
+
 export default {
   name: 'editor',
   props: ['user'],
