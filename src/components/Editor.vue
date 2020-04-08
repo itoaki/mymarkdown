@@ -59,7 +59,7 @@
 
 <script>
 import marked from 'marked';
-import firebase from 'firebase';
+// import firebase from 'firebase';
 
 export default {
   name: 'editor',
@@ -73,15 +73,15 @@ export default {
     };
   },
   created() {
-    firebase
-      .database()
-      .ref('memos/' + this.user.uid)
-      .once('value')
-      .then((result) => {
-        if (result.val()) {
-          this.memos = result.val();
-        }
-      });
+    // firebase
+    //   .database()
+    //   .ref('memos/' + this.user.uid)
+    //   .once('value')
+    //   .then((result) => {
+    //     if (result.val()) {
+    //       this.memos = result.val();
+    //     }
+    //   });
   },
 
   mounted() {
@@ -112,10 +112,10 @@ export default {
       }
     },
     saveMemos() {
-      firebase
-        .database()
-        .ref('memos/' + this.user.uid)
-        .set(this.memos);
+      // firebase
+      //   .database()
+      //   .ref('memos/' + this.user.uid)
+      //   .set(this.memos);
     },
     selectMemo(index) {
       this.selectedIndex = index;
