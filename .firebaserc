@@ -1,1 +1,5 @@
-{}
+{
+  "projects": {
+    "master": "itoaki-markdown"
+  }
+}
