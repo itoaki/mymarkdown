@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 import App from './App.vue';
 import router from './router';
 import 'vuetify/dist/vuetify.min.css';
