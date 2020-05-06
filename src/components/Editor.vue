@@ -3,11 +3,6 @@
     <v-content>
       <v-container>
         <v-layout row>
-          <v-flex md24>
-            <img alt="MyMarkDown" src="../assets/logo.png">
-          </v-flex>
-        </v-layout>
-        <v-layout row>
           <v-flex md12>
             <v-tooltip top>
               <template v-slot:activator="{ on }">

@@ -4,11 +4,6 @@
       <v-container>
         <v-layout row>
           <v-flex md24>
-            <img alt="MyMarkDown" src="../assets/logo.png">
-          </v-flex>
-        </v-layout>
-        <v-layout row>
-          <v-flex md24>
             <!-- お知らせ窓を作る -->
             <v-textarea
               prepend-inner-icon="comment"
