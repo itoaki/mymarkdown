@@ -1,14 +1,6 @@
 <template>
   <div id="top">
-    <v-content>
-      <v-container>
-        <v-layout row>
-          <v-flex md24>
-            <img alt="MyMarkDown" src="../assets/logo.png">
-          </v-flex>
-        </v-layout>
-      </v-container>
-    </v-content>
+    <img alt="MyMarkDown" src="../assets/logo.png">
     <Home v-if="!isLogin"></Home>
     <Editor v-if="isLogin" :user="userData"></Editor>
   </div>

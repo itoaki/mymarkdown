@@ -1,17 +1,12 @@
 import Vue from 'vue';
-import Vuetify from 'vuetify';
 import firebase from 'firebase/app';
 import App from './App.vue';
 import router from './router';
-import 'vuetify/dist/vuetify.min.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import 'material-design-icons-iconfont/dist/material-design-icons.css';
 import './scss/style.scss';
 
 Vue.config.productionTip = false;
-Vue.use(Vuetify, {
-  iconfont: 'fa' || 'mdi',
-});
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAOxGaFAVkWmG98s9dEwv1J42D0n_h71oU',

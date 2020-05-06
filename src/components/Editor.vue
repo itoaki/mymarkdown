@@ -1,55 +1,21 @@
 <template>
-  <div class="editor">
-    <v-content>
-      <v-container>
-        <v-layout row>
-          <v-flex md12>
-            <v-tooltip top>
-              <template v-slot:activator="{ on }">
-                  <v-btn color="info" class="addMemoBtn" @click="addMemo" icon v-on="on">
-                    <v-icon>note_add</v-icon>
-                  </v-btn>
-              </template>
-              <span>新しいメモを追加</span>
-            </v-tooltip>
-            <v-tooltip top>
-              <template v-slot:activator="{ on }">
-                <v-btn color="info" class="saveMemosBtn" @click="saveMemos" icon v-on="on">
-                  <v-icon>save</v-icon>
-                </v-btn>
-              </template>
-              <span>メモを保存</span>
-            </v-tooltip>
-            <v-tooltip top>
-              <template v-slot:activator="{ on }">
-                <v-btn color="error" class="deleteMemoBtn" v-if="memos.length > 1" @click="deleteMemo" icon v-on="on">
-                  <v-icon>delete</v-icon>
-                </v-btn>
-              </template>
-              <span>選択中のメモを削除</span>
-            </v-tooltip>
-          </v-flex>
-          <v-flex md12 class="accountRow">
-            <span>ようこそ！{{ user.displayName }}さん</span>
-            <v-btn color=info @click="logout"><v-icon dark left>exit_to_app</v-icon>ログアウト</v-btn>
-          </v-flex>
-        </v-layout>
-        <v-layout row>
-          <v-flex md4>
-            <div class="memoList" v-for="(memo, index) in memos" @click="selectMemo(index)" :key="index" :data-selected="index == selectedIndex">
-              <p class="memoTitle">{{displayTitle(memo.markdown)}}</p>
-            </div>
-          </v-flex>
-          <v-flex md10>
-            <v-textarea id="textid001" class="markdown textid001" v-model="memos[selectedIndex].markdown" height=500 box></v-textarea>
-          </v-flex>
-          <v-flex md10>
-              <div class="preview markdown-body" v-html="preview()"></div>
-          </v-flex>
-        </v-layout>
-      </v-container>
-    </v-content>
+<div id="editor">
+  <h1>エディター画面</h1>
+  <span>{{ user.displayName }}</span>
+  <button @click="logout">ログアウト</button>
+  <div class="editorWrapper">
+    <div class="memoListWrapper">
+      <div class="memoList" v-for="(memo, index) in memos" :key="index" @click="selectMemo(index)" :data-selected="index == selectedIndex">
+        <p class="memoTitle">{{ displayTitle(memo.markdown) }}</p>
+      </div>
+      <button class="addMemoBtn" @click="addMemo">メモの追加</button>
+      <button class="deleteMemoBtn" v-if="memos.length > 1" @click="deleteMemo">選択中のメモの削除</button>
+      <button class="saveMemosBtn" @click="saveMemos">メモの保存</button>
+    </div>
+    <textarea class="markdown" v-model="memos[selectedIndex].markdown"></textarea>
+    <div class="preview markdown-body" v-html="preview()"></div>
   </div>
+</div>
 </template>
 
 <script>
@@ -134,34 +100,44 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-  .v-textarea.v-text-field--enclosed .v-text-field__slot textarea {
-    margin-top: 0px;
+<<style lang="scss" scoped>
+.editorWrapper {
+  display: flex;
+}
+.memoListWrapper {
+  width: 20%;
+  border-top: 1px solid #000;
+}
+.memoList {
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: left;
+  border-bottom: 1px solid #000;
+  &:nth-child(even) {
+    background-color: #ccc;
   }
-  .preview {
-    margin-left: 5px;
-    height: 500px;
-    overflow: scroll;
+  &[data-selected="true"] {
+    background-color: #ccf;
   }
-  .memoList {
-    padding: 10px;
-    box-sizing: border-box;
-    text-align: left;
-    border-bottom:  1px solid #000;
-    &:nth-child(even) {
-      background-color: #ccc;
-    }
-    &[data-selected="true"] {
-      background-color: #ccf;
-    }
-  }
-  .memoTitle {
-    height: 1.5em;
-    margin: 0;
-    white-space: nowrap;
-    overflow: hidden;
-  }
-  .accountRow {
-    text-align: right;
-  }
+}
+.memoTitle {
+  height: 1.5em;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.addMemoBtn {
+  margin-top: 20px;
+}
+.deleteMemoBtn {
+  margin: 10px;
+}
+.markdown {
+  width: 40%;
+  height: 500px;
+}
+.preview {
+  width: 40%;
+  text-align: left;
+}
 </style>
