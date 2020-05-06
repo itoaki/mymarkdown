@@ -30,8 +30,8 @@ export default {
       background-color: #464646;
 
       margin: 0%;
-
   }
+
   #app {
       margin: 0;
   }
