@@ -1,7 +1,9 @@
 <template>
-<div id="app">
-  <router-view></router-view>
-</div>
+  <v-app>
+    <v-content>
+      <router-view/>
+    </v-content>
+  </v-app>
 </template>
 
 <script>
@@ -9,8 +11,9 @@ export default {
   name: 'app',
 };
 </script>
+
 <style lang="scss">
-  body {
+  .content {
       /* 画像ファイルの指定 */
       background-image: url("./assets/home_backgroung.jpg");
 

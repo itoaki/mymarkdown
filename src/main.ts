@@ -5,6 +5,7 @@ import router from './router';
 import '@fortawesome/fontawesome-free/css/all.css';
 import 'material-design-icons-iconfont/dist/material-design-icons.css';
 import './scss/style.scss';
+import vuetify from './plugins/vuetify';
 
 Vue.config.productionTip = false;
 
@@ -22,5 +23,6 @@ firebase.initializeApp(firebaseConfig);
 
 new Vue({
   router,
+  vuetify,
   render: (h) => h(App),
 }).$mount('#app');
