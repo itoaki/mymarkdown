@@ -50,7 +50,8 @@ export default {
 </script>
 <style lang="scss">
   #top {
-    font-family: "Avenir", Arial, Helvetica, sans-serif;
+    // font-family: "Avenir", Arial, Helvetica, sans-serif;
+    font-family: "Hiragino Kaku Gothic ProN","メイリオ", sans-serif;
   };
   .header {
     height: 5vh;

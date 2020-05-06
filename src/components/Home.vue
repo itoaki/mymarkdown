@@ -57,10 +57,9 @@ export default {
     text-align: center;
   }
   .concept {
-    color: royalblue;
+    color: #696969;
     margin: 10px;
     font-size: 50px;
-    font-weight:bold;
   }
 
   .detail {
