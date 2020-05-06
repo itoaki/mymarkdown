@@ -3,7 +3,6 @@ import Vuetify from 'vuetify';
 import firebase from 'firebase';
 import App from './App.vue';
 import router from './router';
-import store from './store';
 import 'vuetify/dist/vuetify.min.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import 'material-design-icons-iconfont/dist/material-design-icons.css';
@@ -28,6 +27,5 @@ firebase.initializeApp(firebaseConfig);
 
 new Vue({
   router,
-  store,
   render: (h) => h(App),
 }).$mount('#app');
