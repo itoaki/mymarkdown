@@ -19,7 +19,7 @@
 
   <br>
   <div>
-    <button @click="googleLogin">Googleアカウントでログイン</button>
+    <SimpleButton :text="'Googleアカウントでログイン'" @onclick="googleLogin"></SimpleButton>
   </div>
 <!--
   <button @click="githubLogin">GitHubアカウントでログイン</button>
@@ -30,17 +30,16 @@
 
 <script>
 import firebase from 'firebase';
+import SimpleButton from './SimpleButton.vue';
 
 export default {
   name: 'home',
-  data() {
-    return {
-      value: 'aaaaaaaaaaaaaaa¥naaaaaaaaaaaaaaa¥naaaaaaaaaaaaaaa¥naaaaaaaaaaaaaaa¥n',
-    };
+  components: {
+    SimpleButton,
   },
   methods: {
     googleLogin() {
-      firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider());
+      firebase.auth().signInWithRedirect(new firebase.auth.GoogleAuthProvider());
     },
     // twitterLogin() {
     //   firebase.auth().signInWithPopup(new firebase.auth.TwitterAuthProvider());
