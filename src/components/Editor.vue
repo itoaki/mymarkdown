@@ -1,8 +1,5 @@
 <template>
-<div id="editor">
-  <h1>エディター画面</h1>
-  <span>{{ user.displayName }}</span>
-  <button @click="logout">ログアウト</button>
+<div class="editor">
   <div class="editorWrapper">
     <div class="memoListWrapper">
       <div class="memoList" v-for="(memo, index) in memos" :key="index" @click="selectMemo(index)" :data-selected="index == selectedIndex">
@@ -41,7 +38,6 @@ export default {
       .doc(this.user.uid)
       .get()
       .then((doc) => {
-        console.log();
         if (doc.exists) {
           this.memos = doc.data().value;
         }
@@ -64,9 +60,6 @@ export default {
   },
 
   methods: {
-    logout() {
-      firebase.auth().signOut();
-    },
     addMemo() {
       this.memos.push({
         markdown : '無題のメモ',
@@ -100,44 +93,48 @@ export default {
 };
 </script>
 
-<<style lang="scss" scoped>
-.editorWrapper {
-  display: flex;
-}
-.memoListWrapper {
-  width: 20%;
-  border-top: 1px solid #000;
-}
-.memoList {
-  padding: 10px;
-  box-sizing: border-box;
-  text-align: left;
-  border-bottom: 1px solid #000;
-  &:nth-child(even) {
-    background-color: #ccc;
+<style lang="scss" scoped>
+  .editor {
+    width: 100%;
+    text-align: center;
   }
-  &[data-selected="true"] {
-    background-color: #ccf;
+  .editorWrapper {
+    display: flex;
   }
-}
-.memoTitle {
-  height: 1.5em;
-  margin: 0;
-  white-space: nowrap;
-  overflow: hidden;
-}
-.addMemoBtn {
-  margin-top: 20px;
-}
-.deleteMemoBtn {
-  margin: 10px;
-}
-.markdown {
-  width: 40%;
-  height: 500px;
-}
-.preview {
-  width: 40%;
-  text-align: left;
-}
+  .memoListWrapper {
+    width: 20%;
+    border-top: 1px solid #000;
+  }
+  .memoList {
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: left;
+    border-bottom: 1px solid #000;
+    &:nth-child(even) {
+      background-color: #ccc;
+    }
+    &[data-selected="true"] {
+      background-color: #ccf;
+    }
+  }
+  .memoTitle {
+    height: 1.5em;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .addMemoBtn {
+    margin-top: 20px;
+  }
+  .deleteMemoBtn {
+    margin: 10px;
+  }
+  .markdown {
+    width: 40%;
+    height: 500px;
+  }
+  .preview {
+    width: 40%;
+    text-align: left;
+  }
 </style>

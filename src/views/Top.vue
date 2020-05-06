@@ -2,6 +2,9 @@
   <div id="top">
     <div class="header">
       <img alt="MyMarkDown" src="../assets/logo.png" width="150" height="30">
+      <span v-if="isLogin">ようこそ！{{ userData.displayName }}さん </span>
+      <button v-if="isLogin" @click="logout">ログアウト</button>
+
     </div>
     <div class="content">
       <Home v-if="!isLogin"></Home>
@@ -37,6 +40,11 @@ export default {
   components: {
     Home,
     Editor,
+  },
+  methods: {
+    logout() {
+      firebase.auth().signOut();
+    },
   },
 };
 </script>

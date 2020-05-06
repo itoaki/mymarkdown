@@ -3,7 +3,7 @@
   <div>
     <img alt="MyMarkDown" src="../assets/logo.png">
   </div>
-  <p class="concept">すぐに使える・簡単に使える</p>
+  <p class="concept">すぐに使える・簡単に使える<br>マークダウンエディタ</p>
   <div class="detail">
     <p style="font-size: 20px;">
       My Markdownはリアルタイムプレビューができる、シンプルなマークダウンエディタです。<br>
@@ -56,8 +56,8 @@ export default {
     width: 100%;
     text-align: center;
   }
-
   .concept {
+    color: royalblue;
     margin: 10px;
     font-size: 50px;
     font-weight:bold;
