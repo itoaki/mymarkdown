@@ -16,7 +16,7 @@ export default {
   },
   methods: {
     googleLogin() {
-      firebase.auth().signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+      firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider());
     },
   },
 };
