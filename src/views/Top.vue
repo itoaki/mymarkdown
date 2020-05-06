@@ -1,7 +1,15 @@
 <template>
   <div id="top">
-    <Home v-if="!isLogin"></Home>
-    <Editor v-if="isLogin" :user="userData"></Editor>
+    <div class="header">
+      <img alt="MyMarkDown" src="../assets/logo.png" width="150" height="30">
+      <span v-if="isLogin">ようこそ！{{ userData.displayName }}さん </span>
+      <button v-if="isLogin" @click="logout">ログアウト</button>
+
+    </div>
+    <div class="content">
+      <Home v-if="!isLogin"></Home>
+      <Editor v-if="isLogin" :user="userData"></Editor>
+    </div>
   </div>
 </template>
 
@@ -33,10 +41,27 @@ export default {
     Home,
     Editor,
   },
+  methods: {
+    logout() {
+      firebase.auth().signOut();
+    },
+  },
 };
 </script>
 <style lang="scss">
   #top {
-    font-family: "Avenir", Arial, Helvetica, sans-serif
+    // font-family: "Avenir", Arial, Helvetica, sans-serif;
+    font-family: "Hiragino Kaku Gothic ProN","メイリオ", sans-serif;
   };
+  .header {
+    height: 5vh;
+    margin: 0;
+    background-color: white;
+  }
+  .content {
+    height: 93vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 </style>
