@@ -1,8 +1,12 @@
 <template>
   <div id="top">
-    <img alt="MyMarkDown" src="../assets/logo.png">
-    <Home v-if="!isLogin"></Home>
-    <Editor v-if="isLogin" :user="userData"></Editor>
+    <div class="header">
+      <img alt="MyMarkDown" src="../assets/logo.png" width="150" height="30">
+    </div>
+    <div class="content">
+      <Home v-if="!isLogin"></Home>
+      <Editor v-if="isLogin" :user="userData"></Editor>
+    </div>
   </div>
 </template>
 
@@ -38,6 +42,17 @@ export default {
 </script>
 <style lang="scss">
   #top {
-    font-family: "Avenir", Arial, Helvetica, sans-serif
+    font-family: "Avenir", Arial, Helvetica, sans-serif;
   };
+  .header {
+    height: 5vh;
+    margin: 0;
+    background-color: white;
+  }
+  .content {
+    height: 93vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 </style>
