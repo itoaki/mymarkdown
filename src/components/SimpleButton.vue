@@ -1,34 +1,34 @@
 <template>
-  <button class="simpleButton" @click="onclick">{{ text }}</button>
+  <v-tooltip top>
+    <template v-slot:activator="{ on }">
+      <v-btn class="simpleButton" v-on="on" @click="onclick" color="primary">
+        <v-icon color="#FFF">{{ icon }}</v-icon> {{ text }}
+      </v-btn>
+    </template>
+    <span>{{ tooltip }}</span>
+  </v-tooltip>
 </template>
 
 <script>
-
 export default {
   name: 'simpleButton',
-  props: ['text'],
+  props: [
+    'icon',
+    'text',
+    'tooltip',
+  ],
   methods: {
     onclick() {
       this.$emit('onclick');
     },
   },
 };
-
 </script>
+
 <style lang="scss" scoped>
   .simpleButton {
-    display: inline-block;
-    padding: 0.5em 1em;
-    text-decoration: none;
-    background: #668ad8;/*ボタン色*/
     color: #FFF;
-    border-bottom: solid 4px #627295;
-    border-radius: 3px;
+    margin: 2px;
   }
-  .simpleButton:active {
-    /*ボタンを押したとき*/
-    -webkit-transform: translateY(4px);
-    transform: translateY(4px);/*下に動く*/
-    border-bottom: none;/*線を消す*/
-  }
+
 </style>
