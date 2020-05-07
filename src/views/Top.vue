@@ -3,7 +3,7 @@
     <div class="header">
       <img alt="MyMarkDown" src="../assets/logo.png" width="150" height="30">
       <span v-if="isLogin">ようこそ！{{ userData.displayName }}さん </span>
-      <SimpleButton v-if="isLogin" :text="'ログアウト'" @onclick="logout"></SimpleButton>
+      <SimpleButton v-if="isLogin" :icon="'fas fa-sign-out-alt'" :tooltip="'ログアウト'" @onclick="logout"></SimpleButton>
     </div>
     <div class="content">
       <Home v-if="!isLogin"></Home>
