@@ -3,8 +3,7 @@
     <div class="header">
       <img alt="MyMarkDown" src="../assets/logo.png" width="150" height="30">
       <span v-if="isLogin">ようこそ！{{ userData.displayName }}さん </span>
-      <button v-if="isLogin" @click="logout">ログアウト</button>
-
+      <SimpleButton v-if="isLogin" :icon="'fas fa-sign-out-alt'" :tooltip="'ログアウト'" @onclick="logout"></SimpleButton>
     </div>
     <div class="content">
       <Home v-if="!isLogin"></Home>
@@ -16,6 +15,7 @@
 <script>
 import Home from '../components/Home.vue';
 import Editor from '../components/Editor.vue';
+import SimpleButton from '../components/SimpleButton.vue';
 import firebase from 'firebase';
 
 export default {
@@ -40,6 +40,7 @@ export default {
   components: {
     Home,
     Editor,
+    SimpleButton,
   },
   methods: {
     logout() {
