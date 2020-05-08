@@ -10,21 +10,23 @@
       Googleアカウントがあればすぐに使用することができます。
     </p>
     <div class="infomation">
-      <お知らせ><br>
-      ・"Control + s"(Macの場合は"Command + s")で保存できるようになりました。<br>
-      ・"Alt + ↑↓"(Macの場合は"Option + ↑↓")でメモの切り替え<br>
-      ・"Control + Backspace"(Macの場合は"Command + delete")でメモの削除<br>
+      [お知らせ]<br>
+      ・Twitterのアカウントでログインできるようになりました。<br>
+      ・GitHubのアカウントでログインできるようになりました。<br>
+      ・同じメールアドレスを使用して、複数のSNSでログインできるようになりました。<br>
+      ・Control + s"(Macの場合は"Command + s")で保存できるようになりました。<br>
+      [Comming Soon]<br>
+      ・Alt + ↑↓"(Macの場合は"Option + ↑↓")でメモの切り替え<br>
+      ・Control + Backspace"(Macの場合は"Command + delete")でメモの削除<br>
     </div>
   </div>
 
   <br>
   <div>
     <SimpleButton :text="'Googleアカウントでログイン'" @onclick="googleLogin"></SimpleButton>
+    <SimpleButton :text="'GitHubアカウントでログイン'" @onclick="githubLogin"></SimpleButton>
+    <SimpleButton :text="'Twitterアカウントでログイン'" @onclick="twitterLogin"></SimpleButton>
   </div>
-<!--
-  <button @click="githubLogin">GitHubアカウントでログイン</button>
-  <button @click="twitterLogin">Twitterアカウントでログイン</button>
--->
 </div>
 </template>
 
@@ -41,12 +43,12 @@ export default {
     googleLogin() {
       firebase.auth().signInWithRedirect(new firebase.auth.GoogleAuthProvider());
     },
-    // twitterLogin() {
-    //   firebase.auth().signInWithPopup(new firebase.auth.TwitterAuthProvider());
-    // },
-    // githubLogin() {
-    //   firebase.auth().signInWithPopup(new firebase.auth.GithubAuthProvider());
-    // },
+    twitterLogin() {
+      firebase.auth().signInWithPopup(new firebase.auth.TwitterAuthProvider());
+    },
+    githubLogin() {
+      firebase.auth().signInWithPopup(new firebase.auth.GithubAuthProvider());
+    },
   },
 };
 </script>
