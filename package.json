@@ -10,7 +10,7 @@
   "dependencies": {
     "core-js": "^3.6.4",
     "firebase": "^7.13.2",
-    "marked": "^0.6.1",
+    "marked": "^1.1.1",
     "node-sass": "^4.11.0",
     "sass-loader": "^7.1.0",
     "shitajicss": "^5.0.0",
